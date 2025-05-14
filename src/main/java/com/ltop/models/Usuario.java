@@ -1,5 +1,6 @@
 package com.ltop.models;
 
+import com.ltop.enuns.Tipo;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +11,10 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, name = "tipo-usuario")
+    private Tipo tipo;
+
     @Column(nullable = false, length = 100)
     private String nome;
 
@@ -19,14 +24,19 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    // Construtor padrão necessário para JPA
+    @Column(nullable = false, unique = true)
+    private String telefone;
+
+    // Construtor vazio
     public Usuario() {}
 
     // Construtor com todos os campos
-    public Usuario(String nome, String email, String senha) {
+    public Usuario(String nome, String email, String senha, Tipo tipo, String telefone) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.tipo = tipo;
+        this.telefone = telefone;
     }
 
     // Getters e setters
@@ -61,4 +71,12 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public Tipo getTipo() {return tipo;}
+
+    public void setTipo(Tipo tipo) {this.tipo = tipo;}
+
+    public String getTelefone() {return telefone;}
+
+    public void setTelefone(String telefone) {this.telefone = telefone;}
 }

@@ -1,15 +1,17 @@
 package com.ltop;
 
 import java.util.List;
+import com.ltop.enuns.Tipo;
 import com.ltop.models.Usuario;
 import com.ltop.DAO.UsuarioDao;
+
 
 public class Main {
     public static void main(String[] args) {
         UsuarioDao usuarioDao = new UsuarioDao();
 
         //Inserir um novo usuario
-        Usuario usuario = new Usuario("João", "jaojao@caralho.com", "");
+        Usuario usuario = new Usuario("cleber banban", "ibirapuera@birl.com", "", Tipo.CLIENTE, "4002-8922");
         usuarioDao.salvar(usuario);
         System.out.println("Usuário inserido" + usuario);
 
