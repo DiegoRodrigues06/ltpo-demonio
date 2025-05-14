@@ -46,4 +46,3 @@ public class Modelo {
         this.marca = marca;
     }
 }
-

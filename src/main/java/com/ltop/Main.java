@@ -11,7 +11,7 @@ public class Main {
         UsuarioDao usuarioDao = new UsuarioDao();
 
         //Inserir um novo usuario
-        Usuario usuario = new Usuario("cleber banban", "ibirapuera@birl.com", "", Tipo.CLIENTE, "4002-8922");
+        Usuario usuario = new Usuario("mauro moura", "elaquedaelaqueda@.com", "", Tipo.CLIENTE, "4002-8922");
         usuarioDao.salvar(usuario);
         System.out.println("Usuário inserido" + usuario);
 
