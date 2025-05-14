@@ -1,6 +1,6 @@
 package com.ltop.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
@@ -19,11 +19,10 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    // Construtor padrão
-    public Usuario(String joão, String s) {
-    }
+    // Construtor padrão necessário para JPA
+    public Usuario() {}
 
-    // Construtor com campos
+    // Construtor com todos os campos
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;

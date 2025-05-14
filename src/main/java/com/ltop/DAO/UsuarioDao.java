@@ -1,8 +1,8 @@
 package com.ltop.DAO;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import com.ltop.models.Usuario;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class UsuarioDao {
 
     //Método para buscar todos os usuários
     public List<Usuario> buscarTodos() {
-        return em.createQuery("SELECT u FROM Usuário", Usuario.class).getResultList();
+        return em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
     }
 
     //Método para buscar usuário por ID
@@ -39,5 +39,3 @@ public class UsuarioDao {
         emf.close();
     }
 }
-
-

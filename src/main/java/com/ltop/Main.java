@@ -9,7 +9,7 @@ public class Main {
         UsuarioDao usuarioDao = new UsuarioDao();
 
         //Inserir um novo usuario
-        Usuario usuario = new Usuario("João", "jaojao@example.com");
+        Usuario usuario = new Usuario("João", "jaojao@caralho.com", "");
         usuarioDao.salvar(usuario);
         System.out.println("Usuário inserido" + usuario);
 
