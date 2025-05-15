@@ -2,6 +2,8 @@ package com.ltop.models;
 
 import com.ltop.enuns.Tipo;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -27,10 +29,13 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String telefone;
 
-    // Construtor vazio
+    // Relação 1:N com Automoveis
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Automoveis> automoveis = new ArrayList<>();
+
+    // Construtores
     public Usuario() {}
 
-    // Construtor com todos os campos
     public Usuario(String nome, String email, String senha, Tipo tipo, String telefone) {
         this.nome = nome;
         this.email = email;
@@ -72,11 +77,39 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Tipo getTipo() {return tipo;}
+    public Tipo getTipo() {
+        return tipo;
+    }
 
-    public void setTipo(Tipo tipo) {this.tipo = tipo;}
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
 
-    public String getTelefone() {return telefone;}
+    public String getTelefone() {
+        return telefone;
+    }
 
-    public void setTelefone(String telefone) {this.telefone = telefone;}
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public List<Automoveis> getAutomoveis() {
+        return automoveis;
+    }
+
+    public void setAutomoveis(List<Automoveis> automoveis) {
+        this.automoveis = automoveis;
+    }
+
+    // Adiciona um automóvel ao usuário
+    public void adicionarAutomovel(Automoveis automovel) {
+        automoveis.add(automovel);
+        automovel.setUsuario(this); // garante a consistência da relação
+    }
+
+    // Remove um automóvel do usuário
+    public void removerAutomovel(Automoveis automovel) {
+        automoveis.remove(automovel);
+        automovel.setUsuario(null); // limpa a referência
+    }
 }

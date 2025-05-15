@@ -16,7 +16,7 @@ public class Modelo {
         // Construtor padrão necessário para JPA
     }
 
-    public Modelo(int id, String nome, String marca) {
+    public Modelo(String nome, String marca) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
